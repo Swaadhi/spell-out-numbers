@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class NumToSent 
+{
+    public static void main(String[] arguments) 
+	{
+	    Scanner scan = new Scanner(System.in);
+        int number = scan.nextInt();
+		if(number > 0)
+		{
+			String sentence = "";
+			String[] ones_= {"","one","two","three","four","five", "six","seven","eight","nine"};
+			String[] tens_= {"","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
+			String[] hundreds_= {"ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
+			
+			int digit1= number % 10;
+			int digit2= (number/10) % 10;
+			int digit3= (number/100) % 10;
+			int digit4= (number/1000) % 10;
+			
+			if (digit4!=0)
+				sentence = sentence+ones_[digit4]+ " thousand ";
+			
+			if (digit3!=0)
+				sentence = sentence+ones_[digit3]+ " hundred ";
+			
+			if (digit2==1) 
+				sentence= sentence+hundreds_[digit1]+ " ";
+			else
+				sentence= sentence+tens_[digit2]+ "-" +ones_[digit1];
+			
+			System.out.println(sentence);
+		}
+    }
+}
